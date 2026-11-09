@@ -39,6 +39,7 @@ class Delivery:
         self.db = database.db
 
     def showDeliveries(self):
+        # Displays all delivery records
         cursor = self.db.cursor()
         cursor.execute("SELECT * FROM Delivery")
 
