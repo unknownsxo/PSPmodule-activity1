@@ -1,9 +1,12 @@
 import mysql.connector
 
+
 # CLASS 1 - DATABASE
 class Database:
-    # Connects to the MySQL database
+    """Connects to the MySQL database."""
+
     def __init__(self):
+        """Creates the database connection."""
         self.db = mysql.connector.connect(
             host="localhost",
             user="root",
@@ -11,14 +14,16 @@ class Database:
         )
 
 
-
 # CLASS 2 - CUSTOMER
 class Customer:
-    # Manages customer records in database
+    """Manages customer records in the database."""
+
     def __init__(self, database):
+        """Uses the existing database connection."""
         self.db = database.db
 
     def showCustomers(self):
+        """Displays all customer records."""
         cursor = self.db.cursor()
         cursor.execute("SELECT * FROM Customer")
 
@@ -26,6 +31,7 @@ class Customer:
             print(customer)
 
     def addCustomer(self, name, city):
+        """Adds a new customer to the database."""
         cursor = self.db.cursor()
         sql = "INSERT INTO Customer (CustomerName, City) VALUES (%s, %s)"
         cursor.execute(sql, (name, city))
@@ -34,12 +40,14 @@ class Customer:
 
 # CLASS 3 - DELIVERY
 class Delivery:
-    # Manages delivery records in the database
+    """Manages delivery records in the database."""
+
     def __init__(self, database):
+        """Uses the existing database connection."""
         self.db = database.db
 
     def showDeliveries(self):
-        # Displays all delivery records
+        """Displays all delivery records."""
         cursor = self.db.cursor()
         cursor.execute("SELECT * FROM Delivery")
 
