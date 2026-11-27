@@ -22,7 +22,7 @@ class Customer:
         """Uses the existing database connection."""
         self.db = database.db
 
-    def showCustomers(self):
+    def show_Customers(self):
         """Displays all customer records."""
         cursor = self.db.cursor()
         cursor.execute("SELECT * FROM Customer")
@@ -30,7 +30,7 @@ class Customer:
         for customer in cursor.fetchall():
             print(customer)
 
-    def addCustomer(self, name, city):
+    def add_Customer(self, name, city):
         """Adds a new customer to the database."""
         cursor = self.db.cursor()
         sql = "INSERT INTO Customer (CustomerName, City) VALUES (%s, %s)"
@@ -46,7 +46,7 @@ class Delivery:
         """Uses the existing database connection."""
         self.db = database.db
 
-    def showDeliveries(self):
+    def show_Deliveries(self):
         """Displays all delivery records."""
         cursor = self.db.cursor()
         cursor.execute("SELECT * FROM Delivery")
